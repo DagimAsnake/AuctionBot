@@ -37,7 +37,7 @@ bot.hears('Contact', ctx => {
   })
 
 
-  let name, age, sex;
+  let name, bid,  description, opens, closes
   let state = 0;
   
   bot.command("create", ctx => { 
