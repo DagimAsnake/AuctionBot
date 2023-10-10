@@ -72,14 +72,21 @@ bot.hears('Contact', ctx => {
       }
     else {
         closes = ctx.message.text;
-      
-      ctx.reply(`Thank you
-        Name: ${name} 
-        Bid: ${bid}
-        Description: ${description}
-        Opens: ${opens}
-        Closes: ${closes}
-        `);
+        ctx.reply("Enter Your Product image?");
+
+    const last = `
+                  Name: ${name} 
+                  Bid: ${bid}
+                  Description: ${description}
+                  Opens: ${opens}
+                  Closes: ${closes}`;
+
+        bot.on('photo', (ctx) => {
+          const photo = ctx.message.photo[0] // Get the first photo from the message
+        
+          // Reply with the photo and the text "Hi there" below it
+          ctx.replyWithPhoto(photo.file_id, { caption: `${last}` })
+        })
         
       state = 0; 
     }
